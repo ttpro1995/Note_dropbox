@@ -52,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
                 //accessToken should be save somewhere
                 //TODO: accessToken ?
 
+
+
                 Log.i("DbAuthLog","Login successful");
             } catch (IllegalStateException e) {
                 Log.i("DbAuthLog", "Error authenticating", e);
