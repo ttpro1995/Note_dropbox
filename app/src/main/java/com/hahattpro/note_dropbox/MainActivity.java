@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //click here will lead to dropbox login page
                 mApi.getSession().startOAuth2Authentication(MainActivity.this);
             }
         });
@@ -48,6 +49,9 @@ public class MainActivity extends ActionBarActivity {
                 // Required to complete auth, sets the access token on the session
                 mApi.getSession().finishAuthentication();
                 String accessToken = mApi.getSession().getOAuth2AccessToken();
+                //accessToken should be save somewhere
+                //TODO: accessToken ?
+
                 Log.i("DbAuthLog","Login successful");
             } catch (IllegalStateException e) {
                 Log.i("DbAuthLog", "Error authenticating", e);
