@@ -24,7 +24,7 @@ public class CreateFile {
     private String FILE_NAME;//name of file
     private Context context;// context from activity
     public CreateFile(String NAME,String file_body,Context appContext) {
-        FILE_NAME =NAME+"txt";
+        FILE_NAME =NAME+".txt";
     context = appContext;
 
         try{
