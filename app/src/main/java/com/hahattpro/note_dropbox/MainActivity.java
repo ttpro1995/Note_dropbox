@@ -47,8 +47,8 @@ public class MainActivity extends ActionBarActivity {
         textBody = (EditText) findViewById(R.id.text_body);
         textStatus = (TextView) findViewById(R.id.text_Status);
 
-        AndroidAuthSession session = buildSession(); // bind APP_KEY and APP_SECRET with session
-
+        // bind APP_KEY and APP_SECRET with session
+        AndroidAuthSession session = buildSession();
         mApi = new DropboxAPI<AndroidAuthSession>(session);
 
 
@@ -62,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
+            //Click to upload note to dropbox
             public void onClick(View v) {
                 new UploadToDropbox().execute();
             }
@@ -69,9 +70,9 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    //dropbox document ask for this, but still don't know what it is use for ?
     protected void onResume() {
         super.onResume();
-
         if (mApi.getSession().authenticationSuccessful()) {
             try {
                 // Required to complete auth, sets the access token on the session
@@ -79,9 +80,6 @@ public class MainActivity extends ActionBarActivity {
                 String accessToken = mApi.getSession().getOAuth2AccessToken();
                 //accessToken should be save somewhere
                 //TODO: accessToken ?
-
-
-
                 Log.i("DbAuthLog","Login successful");
             } catch (IllegalStateException e) {
                 Log.i("DbAuthLog", "Error authenticating", e);
