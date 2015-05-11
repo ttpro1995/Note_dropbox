@@ -1,5 +1,6 @@
 package com.hahattpro.note_dropbox;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -28,12 +29,14 @@ public class MainActivity extends ActionBarActivity {
     DropboxAPI<AndroidAuthSession> mApi;
     private String APP_KEY="vbdeavygjun1yyz";
     private String APP_SECRET="q8yqmdihl0cuwtv";
+    private String ACCESS_TOKEN;
 
     Button mLogin;//login dropbox
     Button mSubmit;//upload file
     EditText textTitle;//file name (without extension)
     EditText textBody;//file body
     TextView textStatus;//show upload progress
+    Button mSaveWebPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
         textTitle = (EditText) findViewById(R.id.text_title);
         textBody = (EditText) findViewById(R.id.text_body);
         textStatus = (TextView) findViewById(R.id.text_Status);
+        mSaveWebPage = (Button) findViewById(R.id.button_ToWebPage);
 
         // bind APP_KEY and APP_SECRET with session
         AndroidAuthSession session = buildSession();
@@ -68,6 +72,14 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        mSaveWebPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SaveWebPage.class);
+                intent.putExtra(getResources().getString(R.string.Access_token),ACCESS_TOKEN);
+                startActivity(intent);
+            }
+        });
     }
 
     //dropbox document ask for this, but still don't know what it is use for ?
@@ -77,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
             try {
                 // Required to complete auth, sets the access token on the session
                 mApi.getSession().finishAuthentication();
-                String accessToken = mApi.getSession().getOAuth2AccessToken();
+                ACCESS_TOKEN = mApi.getSession().getOAuth2AccessToken();
                 //accessToken should be save somewhere
                 //TODO: accessToken ?
                 Log.i("DbAuthLog","Login successful");
@@ -116,6 +128,7 @@ public class MainActivity extends ActionBarActivity {
         // APP_KEY and APP_SECRET goes here
         AppKeyPair appKeyPair= new AppKeyPair(APP_KEY,APP_SECRET);
         AndroidAuthSession session = new AndroidAuthSession(appKeyPair);
+
         return session;
     }
 

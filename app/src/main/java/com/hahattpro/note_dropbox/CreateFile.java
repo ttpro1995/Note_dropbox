@@ -55,5 +55,4 @@ public class CreateFile {
 
 }
 
-//TODO: create new activity which take file_name, file_body and upload into dropbox
-//TODO: It should be same activity with mApi would be ok
+//TODO: create List File and readfile

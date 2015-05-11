@@ -3,52 +3,36 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    >
-
-    <TextView
-        android:id="@+id/text_Status"
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
-
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Log in"/>
+    tools:context="com.hahattpro.note_dropbox.SaveWebPage">
 
     <EditText
-        android:id="@+id/text_title"
+        android:id="@+id/edit_save_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="1"
         android:hint="title"
-
         />
 
     <EditText
-        android:id="@+id/text_body"
+        android:id="@+id/edit_WebAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="3"
-        android:hint="body"
-        android:scrollbars="vertical"
+        android:lines="1"
+        android:hint="webaddress"
         />
+
     <Button
-        android:id="@+id/button_submit"
+        android:id="@+id/button_submit_web"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="submit"/>
 
-    <Button
-        android:id="@+id/button_ToWebPage"
+    <TextView
+        android:id="@+id/text_SaveHTMLStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save web page"/>
-
-
+        android:text="status"
+        />
 </LinearLayout>
